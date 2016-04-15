@@ -21,6 +21,15 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
         setupSearchView()
     }
     
+    @IBAction func toggleEditingMode(sender: AnyObject) {
+        if tableView.editing{
+            tableView.setEditing(false, animated: true)
+            navigationItem.rightBarButtonItem?.title = "Edit"
+        }else{
+            tableView.setEditing(true, animated: true)
+            navigationItem.rightBarButtonItem?.title = "Done"
+        }
+    }
     
     func getData() -> ([Hero]){
         
@@ -86,18 +95,25 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
-        var index = indexPath.row
-        
-        for i in 0..<indexPath.section{
-            index += self.tableView(tableView, numberOfRowsInSection: i)
-        }
-        
+        let index = getAbsolutePositionFromIndexPath(indexPath)
         
         cell.textLabel?.text = tableData[index].name
         cell.detailTextLabel?.text = tableData[index].power
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete{
+            heroes.removeAtIndex(getAbsolutePositionFromIndexPath(indexPath))
+            tableData = heroes
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+        
+    }
+    
+    
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
@@ -138,8 +154,6 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
         searchController.dimsBackgroundDuringPresentation = false
         self.tableView.tableHeaderView = searchController.searchBar
         
-        
-        
     }
     
     
@@ -159,6 +173,18 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
             tableView.reloadData()
             
         }
+    }
+    
+    func getAbsolutePositionFromIndexPath(indexPath:NSIndexPath) -> (Int){
+        
+        var index = indexPath.row
+        
+        for i in 0..<indexPath.section{
+            index += self.tableView(tableView, numberOfRowsInSection: i)
+        }
+        
+        return index
+
     }
     
     
