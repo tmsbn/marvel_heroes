@@ -131,6 +131,7 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
     
     func setupSearchView(){
         
+        //let searchController = UISearchController(searchResultsController: nil) //This does not work!
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = true
