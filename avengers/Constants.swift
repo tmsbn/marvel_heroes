@@ -25,4 +25,5 @@ enum TEAM: String{
 struct DesignConstants{
     
     static let TableRowHeight:CGFloat = 60.0
+    static let TableHeaderHeight:CGFloat = 44.0
 }

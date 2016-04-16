@@ -114,11 +114,6 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
     }
     
     
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
-    }
-    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var title:String?
         
@@ -138,7 +133,7 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
     }
     
     override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        view.endEditing(true)
+        searchController.searchBar.resignFirstResponder()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -147,7 +142,6 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
     
     func setupSearchView(){
         
-        //let searchController = UISearchController(searchResultsController: nil) //This does not work!
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = true
@@ -184,22 +178,24 @@ class HeroesListController: UITableViewController, UISearchResultsUpdating{
         }
         
         return index
-
+        
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        searchController.searchBar.resignFirstResponder()
+        
+        if let indexPath = tableView.indexPathForSelectedRow{
+            
+            if segue.identifier! == "details"{
+                let hero = heroes[self.getAbsolutePositionFromIndexPath(indexPath)]
+                
+                let detailsViewController = segue.destinationViewController as! DetailsViewController
+                detailsViewController.hero = hero
+            }
+        }
+        
+    }
     
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

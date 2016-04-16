@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Marvel heroes-->
@@ -37,6 +38,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="TXm-cu-fDt" kind="show" identifier="details" id="42m-S5-GwB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -46,7 +50,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Marvel Heroes" id="0es-ge-fGj">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="SSa-sT-HTJ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="toggleEditingMode:" destination="guW-SY-5xb" id="bK7-9O-JZw"/>
                             </connections>
@@ -57,6 +60,136 @@
             </objects>
             <point key="canvasLocation" x="263" y="-55"/>
         </scene>
+        <!--Details-->
+        <scene sceneID="cIO-gn-vL8">
+            <objects>
+                <viewController title="Details" automaticallyAdjustsScrollViewInsets="NO" id="TXm-cu-fDt" customClass="DetailsViewController" customModule="marvel_heroes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YdZ-ro-XTp"/>
+                        <viewControllerLayoutGuide type="bottom" id="oJp-Kn-bZf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nOa-Kx-An6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="50" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="L9V-I9-Voj">
+                                <rect key="frame" x="0.0" y="314" width="600" height="286"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detail_cell" rowHeight="80" id="V7j-WK-9BB" customClass="DetailCell" customModule="marvel_heroes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="600" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V7j-WK-9BB" id="Ars-FN-D2m">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3V-zZ-ReS">
+                                                    <rect key="frame" x="28" y="13" width="43" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warhammer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq9-FZ-0Dp">
+                                                    <rect key="frame" x="28" y="33" width="114.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="T3V-zZ-ReS" firstAttribute="top" secondItem="Ars-FN-D2m" secondAttribute="topMargin" constant="5" id="4HP-6P-43r"/>
+                                                <constraint firstItem="Jq9-FZ-0Dp" firstAttribute="top" secondItem="T3V-zZ-ReS" secondAttribute="bottom" constant="2" id="Fwv-Fo-pIy"/>
+                                                <constraint firstItem="T3V-zZ-ReS" firstAttribute="leading" secondItem="Ars-FN-D2m" secondAttribute="leadingMargin" constant="20" id="JUw-If-EWs"/>
+                                                <constraint firstItem="Jq9-FZ-0Dp" firstAttribute="leading" secondItem="T3V-zZ-ReS" secondAttribute="leading" id="xWf-Oy-iI6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemLabel" destination="T3V-zZ-ReS" id="21u-gQ-D4X"/>
+                                            <outlet property="valueLabel" destination="Jq9-FZ-0Dp" id="7M6-sT-32l"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="TXm-cu-fDt" id="80a-eq-Rfe"/>
+                                    <outlet property="delegate" destination="TXm-cu-fDt" id="fmp-C8-CDL"/>
+                                </connections>
+                            </tableView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sv0-4h-Al9">
+                                <rect key="frame" x="0.0" y="64" width="600" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Z3Z-Yc-aaf"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="6Un-Og-sM4" kind="embed" identifier="pageViewControllerSegue" id="PGM-Q2-vtO"/>
+                                </connections>
+                            </containerView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="x0g-Y0-Ueh">
+                                <rect key="frame" x="265" y="269" width="71" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="L9V-I9-Voj" secondAttribute="trailing" id="1uY-Ma-XfH"/>
+                            <constraint firstItem="L9V-I9-Voj" firstAttribute="top" secondItem="x0g-Y0-Ueh" secondAttribute="bottom" constant="8" id="8Da-9E-JM1"/>
+                            <constraint firstItem="L9V-I9-Voj" firstAttribute="top" secondItem="Sv0-4h-Al9" secondAttribute="bottom" id="GLE-Zq-4H7"/>
+                            <constraint firstItem="Sv0-4h-Al9" firstAttribute="leading" secondItem="nOa-Kx-An6" secondAttribute="leading" id="HhW-w9-KBE"/>
+                            <constraint firstItem="x0g-Y0-Ueh" firstAttribute="centerX" secondItem="nOa-Kx-An6" secondAttribute="centerX" id="KxE-ye-d5l"/>
+                            <constraint firstItem="Sv0-4h-Al9" firstAttribute="top" secondItem="nOa-Kx-An6" secondAttribute="top" constant="64" id="Osm-9E-Xiu"/>
+                            <constraint firstItem="L9V-I9-Voj" firstAttribute="leading" secondItem="nOa-Kx-An6" secondAttribute="leading" id="Skk-2u-Bp7"/>
+                            <constraint firstAttribute="trailing" secondItem="Sv0-4h-Al9" secondAttribute="trailing" id="TTK-q7-MaF"/>
+                            <constraint firstAttribute="bottom" secondItem="L9V-I9-Voj" secondAttribute="bottom" id="y3f-Xs-6tf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailsTable" destination="L9V-I9-Voj" id="bAI-42-fsp"/>
+                        <outlet property="pageControl" destination="x0g-Y0-Ueh" id="Jk8-4y-M2v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m13-6W-zvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="996" y="-55"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="V98-cv-0G3">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="6Un-Og-sM4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="brA-Pd-F50" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1819" y="-78"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="nBm-Dc-CoG">
+            <objects>
+                <viewController storyboardIdentifier="ImageViewController" id="ZnA-Bc-qj2" customClass="ImageViewController" customModule="marvel_heroes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OOr-hD-ASR"/>
+                        <viewControllerLayoutGuide type="bottom" id="zh2-iV-8CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5cD-Ep-nYb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NxT-BZ-p2F">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NxT-BZ-p2F" secondAttribute="trailing" id="8ZN-eP-nsD"/>
+                            <constraint firstItem="NxT-BZ-p2F" firstAttribute="top" secondItem="5cD-Ep-nYb" secondAttribute="top" id="JdM-rr-Nab"/>
+                            <constraint firstAttribute="bottom" secondItem="NxT-BZ-p2F" secondAttribute="bottom" id="XrW-4f-hMD"/>
+                            <constraint firstItem="NxT-BZ-p2F" firstAttribute="leading" secondItem="5cD-Ep-nYb" secondAttribute="leading" id="bzV-aM-VfP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="NxT-BZ-p2F" id="c0K-Pe-E6b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ush-Yk-80M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2232" y="456"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="u5l-Uy-HI9">
             <objects>
@@ -65,6 +198,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dkI-up-9pw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

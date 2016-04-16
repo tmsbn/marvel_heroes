@@ -16,6 +16,10 @@
 		8AA1750D1CBFA65D0008EAD6 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1750C1CBFA65D0008EAD6 /* Hero.swift */; };
 		8AA175111CBFB31F0008EAD6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA175101CBFB31F0008EAD6 /* Constants.swift */; };
 		8AA175131CC0B6030008EAD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA175121CC0B6030008EAD6 /* Extensions.swift */; };
+		8AA175151CC160B40008EAD6 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA175141CC160B40008EAD6 /* DetailsViewController.swift */; };
+		8AA175171CC182390008EAD6 /* HeroDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA175161CC182390008EAD6 /* HeroDetail.swift */; };
+		8AA1751D1CC1F8240008EAD6 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1751C1CC1F8240008EAD6 /* DetailCell.swift */; };
+		8AA175231CC28C0C0008EAD6 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA175221CC28C0C0008EAD6 /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +32,12 @@
 		8AA175021CBFA4490008EAD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AA1750A1CBFA6280008EAD6 /* HeroesListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesListController.swift; sourceTree = "<group>"; };
 		8AA1750C1CBFA65D0008EAD6 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
-		8AA175101CBFB31F0008EAD6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8AA175121CC0B6030008EAD6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8AA175101CBFB31F0008EAD6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = avengers/Constants.swift; sourceTree = "<group>"; };
+		8AA175121CC0B6030008EAD6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = avengers/Extensions.swift; sourceTree = "<group>"; };
+		8AA175141CC160B40008EAD6 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		8AA175161CC182390008EAD6 /* HeroDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetail.swift; sourceTree = "<group>"; };
+		8AA1751C1CC1F8240008EAD6 /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
+		8AA175221CC28C0C0008EAD6 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,19 +70,48 @@
 		8AA174F51CBFA4490008EAD6 /* marvel_heroes */ = {
 			isa = PBXGroup;
 			children = (
+				8AA1751B1CC1829A0008EAD6 /* utils */,
 				8AA174F61CBFA4490008EAD6 /* AppDelegate.swift */,
-				8AA174F81CBFA4490008EAD6 /* ViewController.swift */,
+				8AA175191CC182630008EAD6 /* views */,
 				8AA174FA1CBFA4490008EAD6 /* Main.storyboard */,
 				8AA174FD1CBFA4490008EAD6 /* Assets.xcassets */,
 				8AA174FF1CBFA4490008EAD6 /* LaunchScreen.storyboard */,
 				8AA175021CBFA4490008EAD6 /* Info.plist */,
-				8AA1750A1CBFA6280008EAD6 /* HeroesListController.swift */,
-				8AA1750C1CBFA65D0008EAD6 /* Hero.swift */,
-				8AA175101CBFB31F0008EAD6 /* Constants.swift */,
-				8AA175121CC0B6030008EAD6 /* Extensions.swift */,
+				8AA175181CC1824F0008EAD6 /* models */,
+				8AA175221CC28C0C0008EAD6 /* ImageViewController.swift */,
 			);
 			name = marvel_heroes;
 			path = avengers;
+			sourceTree = "<group>";
+		};
+		8AA175181CC1824F0008EAD6 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				8AA1750C1CBFA65D0008EAD6 /* Hero.swift */,
+				8AA175161CC182390008EAD6 /* HeroDetail.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		8AA175191CC182630008EAD6 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8AA174F81CBFA4490008EAD6 /* ViewController.swift */,
+				8AA1750A1CBFA6280008EAD6 /* HeroesListController.swift */,
+				8AA175141CC160B40008EAD6 /* DetailsViewController.swift */,
+				8AA1751C1CC1F8240008EAD6 /* DetailCell.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		8AA1751B1CC1829A0008EAD6 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				8AA175101CBFB31F0008EAD6 /* Constants.swift */,
+				8AA175121CC0B6030008EAD6 /* Extensions.swift */,
+			);
+			name = utils;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,8 +188,12 @@
 			files = (
 				8AA1750D1CBFA65D0008EAD6 /* Hero.swift in Sources */,
 				8AA175131CC0B6030008EAD6 /* Extensions.swift in Sources */,
+				8AA1751D1CC1F8240008EAD6 /* DetailCell.swift in Sources */,
 				8AA174F91CBFA4490008EAD6 /* ViewController.swift in Sources */,
 				8AA1750B1CBFA6280008EAD6 /* HeroesListController.swift in Sources */,
+				8AA175171CC182390008EAD6 /* HeroDetail.swift in Sources */,
+				8AA175151CC160B40008EAD6 /* DetailsViewController.swift in Sources */,
+				8AA175231CC28C0C0008EAD6 /* ImageViewController.swift in Sources */,
 				8AA174F71CBFA4490008EAD6 /* AppDelegate.swift in Sources */,
 				8AA175111CBFB31F0008EAD6 /* Constants.swift in Sources */,
 			);
